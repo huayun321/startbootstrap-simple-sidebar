@@ -38,44 +38,53 @@
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
 
-                                Collapsible Group Item #1
+                                画笔选项
 
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                         <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            <label for="drawing-line-width">线条宽度:</label>
+                            <span id="drawing-line-width-val" class="info">30</span><input type="range" value="30" min="0" max="150" id="drawing-line-width"><br>
+
+                            <label for="drawing-color">线条颜色:</label>
+                            <input type="color" value="#005E7A" id="drawing-color"><br>
+
+
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h4 class="panel-title">
-                            2
+                            文本选项
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            <textarea id="text-content" rows="5" style="width:100%"></textarea><br>
+                            <label for="text-color">文本颜色:</label>
+                            <input type="color" value="#005E7A" id="text-color"><br>
+                            <button id="text-add">添加到画板</button>
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-title">
-                            3
+                            图案选项
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
                         </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingFour">
                         <h4 class="panel-title">
-                            3
+                            图片选项
                         </h4>
                     </div>
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
@@ -95,57 +104,57 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+                        <div id="contorl-bar" class="btn-group" role="toolbar" aria-label="...">
 
-                        <div class="btn-group btn-group-justified" role="toolbar" aria-label="...">
-                            <div class="btn-group" role="group">
-                                <button id="" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-parent="#accordion">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="false"></span>
-                                    画笔
+                                <button id="tool-sidebar" type="button" class="btn btn-success" >
+                                    <span class="glyphicon glyphicon-transfer" aria-hidden="false"></span>
+                                    边栏
                                 </button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" data-parent="#accordion">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="false"></span>
-                                    文本
-                                </button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" data-parent="#accordion">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="false"></span>
-                                    图案
-                                </button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" data-parent="#accordion">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="false"></span>
-                                    图片
-                                </button>
-                            </div>
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="false"></span>
+
+
+                                <button id="tool-save" type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="false"></span>
                                     保存
                                 </button>
-                            </div>
 
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-danger" >
+                                <button id="tool-clear" type="button" class="btn btn-danger" >
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="false"></span>
                                     清空
                                 </button>
 
-                            </div>
+                        </div>
+                        <div id="toolbar" class="btn-group" role="toolbar" aria-label="...">
+
+
+
+                                <button id="tool-pencil" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="false"></span>
+                                    画笔
+                                </button>
+
+
+                                <button id="tool-text" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-font" aria-hidden="false"></span>
+                                    文本
+                                </button>
+
+                                <button id="tool-stamp" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-tree-conifer" aria-hidden="false"></span>
+                                    图案
+                                </button>
+
+                                <button id="tool-img" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" data-parent="#accordion">
+                                    <span class="glyphicon glyphicon-picture" aria-hidden="false"></span>
+                                    图片
+                                </button>
+
+
 
                         </div>
 
+                        <p>918diy board<code>fightting!</code>.</p>
 
-
-
-
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                        <canvas style="border:1px solid #000; min-height: 1200px; width: 850px">canvas</canvas>
+                        <canvas id="canvas" width="850" height="1200" style="border:1px solid #000;  margin: 10px auto;">canvas</canvas>
                     </div>
                 </div>
             </div>
@@ -161,12 +170,56 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
+    <!-- fabric JavaScript -->
+    <script src="js/fabric.min.js"></script>
+
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $( document ).ready(function() {
+            var canvas = new fabric.Canvas('canvas');
+
+            $('#toolbar > button').click(function(e) {
+                console.log(e.target.id);
+                var btn_id = e.target.id;
+                //active
+                $('#toolbar > button').removeClass('disabled');
+                $('#'+ btn_id).addClass('disabled');
+
+                //drawingmode
+                canvas.isDrawingMode = false;
+
+                //switch tool
+                switch (btn_id) {
+                    case 'tool-sidebar':
+                        e.preventDefault();
+                        $("#wrapper").toggleClass("toggled");
+                        break;
+                    case 'tool-pencil':
+                        canvas.isDrawingMode = true;
+                        canvas.freeDrawingBrush.color = $('#drawing-color').val();
+                        canvas.freeDrawingBrush.width = parseInt($('#drawing-line-width').val(), 10) || 1;
+                        break;
+                    case 'tool-text':
+                        break;
+                }
+            });
+
+            $('#drawing-color').change(function() {
+                canvas.freeDrawingBrush.color = $(this).val();
+            });
+            $('#text-add').click(function() {
+                var text = $('#text-content').val();
+                var color = $('#text-color').val();
+                var t = new fabric.IText(text);
+                t.setColor(color);
+                canvas.add(t);
+            });
+            $('#drawing-line-width').change(function() {
+                canvas.freeDrawingBrush.width = parseInt($(this).val(), 10) || 1;
+                $('#drawing-line-width-val').text($(this).val());
+            });
+        });
+
     </script>
 
 </body>
