@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<canvas style="border: 1px solid #ccc" id="canvas" width="1000" height="600"></canvas>
+
+<script src="js/fabric.min.js"></script>
+<script>
+    var canvas = new fabric.Canvas('canvas');
+    var png_path = 'fontcustom/png/angel7.png';
+
+    fabric.Image.fromURL(png_path, function(nimg) {
+
+        canvas.add(nimg);
+        fabric.Image.fromURL('imgs/y.jpg', function(oimg) {
+            oimg.clipTo = function(ctx) {
+                nimg.render(ctx);
+
+            }
+            canvas.add(oimg);
+        });
+    });
+
+
+
+
+
+    canvas.on('object:selected', function(options) {
+        if (options.target) {
+            console.log('an object was clicked! ', options.target.paths[0]);
+        }
+    });
+
+
+</script>
+</body>
+</html>

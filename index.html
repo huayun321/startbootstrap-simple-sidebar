@@ -17,6 +17,24 @@
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
 
+    <!-- FlatIcon CSS -->
+    <link href="flaticon/flaticon.css" rel="stylesheet">
+    <!-- FlatIcon CSS -->
+    <link href="fontcustom/fontcustom.css" rel="stylesheet">
+
+    <style>
+        #modal-canvas{
+            border: 1px solid #000;
+            margin: 0 auto;
+        }
+        .modal-dialog{
+            width: 835px;
+        }
+        /*.modal-content{*/
+            /*width: 900px;*/
+        /*}*/
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -76,8 +94,45 @@
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body">
-
+                        <div id="stamp-box" class="panel-body">
+                            <button id="alarm55" class="btn btn-default btn-sm">
+                                <span class="icon-alarm55 size-24"></span>
+                            </button>
+                            <button id="angel7" class="btn btn-default btn-sm">
+                                <span class="icon-angel7 size-24"></span>
+                            </button>
+                            <button id="bag40" class="btn btn-default btn-sm">
+                                <span class="icon-bag40 size-24"></span>
+                            </button>
+                            <button id="penguin4" class="btn btn-default btn-sm">
+                                <span class="icon-penguin4 size-24"></span>
+                            </button>
+                            <button id="bell47" class="btn btn-default btn-sm">
+                                <span class="icon-bell47 size-24"></span>
+                            </button>
+                            <button id="bell48" class="btn btn-default btn-sm">
+                                <span class="icon-bell48 size-24"></span>
+                            </button>
+                            <button id="bell49" class="btn btn-default btn-sm">
+                                <span class="icon-bell49 size-24"></span>
+                            </button>
+                            <button id="bell50" class="btn btn-default btn-sm">
+                                <span class="icon-bell50 size-24"></span>
+                            </button>
+                            <button id="bible4" class="btn btn-default btn-sm">
+                                <span class="icon-bible4 size-24"></span>
+                            </button>
+                            <button id="cake17" class="btn btn-default btn-sm">
+                                <span class="icon-cake17 size-24"></span>
+                            </button>
+                            <button id="calendar167" class="btn btn-default btn-sm">
+                                <span class="icon-calendar167 size-24"></span>
+                            </button>
+                            <button id="candle11" class="btn btn-default btn-sm">
+                                <span class="icon-candle11 size-24"></span>
+                            </button>
+                            <br>
+                            此处的形状和图案可由你们提供 或者我来提供
                         </div>
                     </div>
                 </div>
@@ -88,8 +143,11 @@
                         </h4>
                     </div>
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                        <div class="panel-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <div id="imgs-box" class="panel-body">
+                            <img width="100" src="imgs/x.jpg">
+                            <img width="100" src="imgs/y.jpg">
+                            <img width="100" src="imgs/z.jpg">
+                            <img width="100" src="imgs/w.jpg">
                         </div>
                     </div>
                 </div>
@@ -161,6 +219,26 @@
         </div>
         <!-- /#page-content-wrapper -->
 
+        <!-- Modal -->
+        <div class="modal fade modal-canvas" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div id="canvas-box" class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="crop" type="button" class="btn btn-primary">填充到图案</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <!-- /#wrapper -->
 
@@ -174,53 +252,7 @@
     <script src="js/fabric.min.js"></script>
 
     <!-- Menu Toggle Script -->
-    <script>
-        $( document ).ready(function() {
-            var canvas = new fabric.Canvas('canvas');
-
-            $('#toolbar > button').click(function(e) {
-                console.log(e.target.id);
-                var btn_id = e.target.id;
-                //active
-                $('#toolbar > button').removeClass('disabled');
-                $('#'+ btn_id).addClass('disabled');
-
-                //drawingmode
-                canvas.isDrawingMode = false;
-
-                //switch tool
-                switch (btn_id) {
-                    case 'tool-sidebar':
-                        e.preventDefault();
-                        $("#wrapper").toggleClass("toggled");
-                        break;
-                    case 'tool-pencil':
-                        canvas.isDrawingMode = true;
-                        canvas.freeDrawingBrush.color = $('#drawing-color').val();
-                        canvas.freeDrawingBrush.width = parseInt($('#drawing-line-width').val(), 10) || 1;
-                        break;
-                    case 'tool-text':
-                        break;
-                }
-            });
-
-            $('#drawing-color').change(function() {
-                canvas.freeDrawingBrush.color = $(this).val();
-            });
-            $('#text-add').click(function() {
-                var text = $('#text-content').val();
-                var color = $('#text-color').val();
-                var t = new fabric.IText(text);
-                t.setColor(color);
-                canvas.add(t);
-            });
-            $('#drawing-line-width').change(function() {
-                canvas.freeDrawingBrush.width = parseInt($(this).val(), 10) || 1;
-                $('#drawing-line-width-val').text($(this).val());
-            });
-        });
-
-    </script>
+    <script src="js/diy918.js"></script>
 
 </body>
 
