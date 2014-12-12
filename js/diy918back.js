@@ -1,7 +1,6 @@
 $( document ).ready(function() {
     var canvas = new fabric.Canvas('canvas');
-    var m_canvas = new fabric.Canvas('modal-canvas');
-    var stamp = null;
+
 /*
 * tool bar
 * */
@@ -55,12 +54,18 @@ $( document ).ready(function() {
     //imgs
     $('#imgs-box > img').click(function(e) {
         //load img and stamp
-
+        var active_obj = null;
         canvas.getActiveObject().clone(function(o) {
             o.opacity = 0.5;
-            stamp = o;
-            stamp.hasControls = false;
+            active_obj = o;
+            active_obj.hasControls = false;
         });
+        console.log(active_obj);
+        //add canvas
+        var model_canvas = "<canvas id='modal-canvas' width='800' height='600'></canvas>";
+
+        $('#canvas-box').html(model_canvas);
+        var m_canvas = new fabric.Canvas('modal-canvas');
         //load img
         fabric.Image.fromURL(e.target.src, function(oimg) {
             if(oimg.width > 750) {
@@ -71,51 +76,48 @@ $( document ).ready(function() {
             m_canvas.add(oimg);
             oimg.setCoords();
 
-            m_canvas.centerObject(stamp);
-            m_canvas.add(stamp).setActiveObject(stamp);
-            stamp.setCoords();
+            m_canvas.centerObject(active_obj);
+            m_canvas.add(active_obj).setActiveObject(active_obj);
+            active_obj.setCoords();
         });
         $('#myModal').modal();
 
-
-    });
-
-    //crop
-    $('#crop').click(function() {
-        stamp.opacity = 0;
         //crop
-        var dataUrl = null;
-        dataUrl = m_canvas.toDataURL({
-            top: stamp.top,
-            left: stamp.left,
-            width: stamp.width * stamp.scaleX,
-            height: stamp.height *  stamp.scaleY
-        });
+        $('#crop').click(function() {
+            active_obj.opacity = 0;
+            //crop
+            var dataUrl = null;
+            dataUrl = m_canvas.toDataURL({
+                top: active_obj.top,
+                left: active_obj.left,
+                width: active_obj.width * active_obj.scaleX,
+                height: active_obj.height *  active_obj.scaleY
+            });
 
-        stamp = canvas.getActiveObject();
+            var stamp = canvas.getActiveObject();
 
-        fabric.Image.fromURL(dataUrl, function(iimg) {
-            console.log('load img');
-            iimg.top =  stamp.top;
-            iimg.left = stamp.left;
+            fabric.Image.fromURL(dataUrl, function(iimg) {
+                console.log('load img');
+                iimg.top =  stamp.top;
+                iimg.left = stamp.left;
 
 //
-            var stam_png = stamp.toDataURL();
-            fabric.Image.fromURL(stam_png, function(mimg) {
-                console.log('load mask');
-                iimg.filters.push( new fabric.Image.filters.Mask( { 'mask': mimg, channel:3} ) );
+//                var stam_png = stamp.toDataURL();
+//                fabric.Image.fromURL(stam_png, function(mimg) {
+//                    console.log('load mask');
+//                    iimg.filters.push( new fabric.Image.filters.Mask( { 'mask': mimg, channel:3} ) );
 
-                iimg.applyFilters(canvas.renderAll.bind(canvas));
-                canvas.add(iimg);
-                canvas.remove(stamp);
+                    //iimg.applyFilters();
+                    canvas.add(iimg);
+                    canvas.remove(stamp);
+
+                //});
+
 
             });
 
-
+            $('#myModal').modal('hide');
         });
-
-        $('#myModal').modal('hide');
-        m_canvas.clear();
     });
 /*
 * sidebar
