@@ -31,6 +31,8 @@ Copyright 2014 Iron Summit Media Strategies, LLC. Code released under the [Apach
 1、模板
     尺寸調整
         1050 1500
+        todo
+            是否改爲draggable resizeable movable dropable 布局
     背景顏色
         單色
     保存
@@ -45,20 +47,19 @@ Copyright 2014 Iron Summit Media Strategies, LLC. Code released under the [Apach
             使用mask
         坐標
         大小
-    截圖
-        修改bug
-        圖片尺寸
-            控件顯示調整
+
     水印
         定制水印
 
-    去掉文本
+    去掉畫筆
     去掉多餘圖形
     文件結構整理下
 
 2、填充
     截圖
-        可重復填充
+        修改bug
+        圖片尺寸
+            控件顯示調整
     保存
         文件名爲日期
         是否繼續
