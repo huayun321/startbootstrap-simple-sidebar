@@ -24,3 +24,54 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 ## Copyright and License
 
 Copyright 2014 Iron Summit Media Strategies, LLC. Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-simple-sidebar/blob/gh-pages/LICENSE) license.
+
+
+## 開始diy畫板的修改
+
+1、模板
+    尺寸調整
+        1050 1500
+    背景顏色
+        單色
+    保存
+        保存到數據庫
+        mongodb 建模
+        girdfs or mongodb blog
+    圖形
+        基本圖形
+            正方形 長方形 圓形 橢圓
+            使用clip
+        心形
+            使用mask
+        坐標
+        大小
+    截圖
+        修改bug
+        圖片尺寸
+            控件顯示調整
+    水印
+        定制水印
+
+    去掉文本
+    去掉多餘圖形
+    文件結構整理下
+
+2、填充
+    截圖
+        可重復填充
+    保存
+        文件名爲日期
+        是否繼續
+            是則保留素材
+    模板
+        可選擇模板
+
+
+3、bug修改
+    截圖時圖片重復
+
+4、素材
+    素材建模
+    上傳
+    管理
+
