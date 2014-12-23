@@ -83,7 +83,19 @@
                             <textarea id="text-content" rows="5" style="width:100%"></textarea><br>
                             <label for="text-color">文本颜色:</label>
                             <input type="color" value="#005E7A" id="text-color"><br>
-                            <button id="text-add">添加到画板</button>
+
+
+                            <label for="text-xp">橫坐標:</label>
+                            <input type="text" size="5"  id="text-xp">毫米<br>
+                            <label for="text-yp">縱坐標:</label>
+                            <input type="text" size="5"  id="text-yp">毫米<br>
+                            <label for="text-sy">是否爲水印:</label>
+                            <input type="checkbox"  id="text-sy"><br>
+                            <label for="text-opacity">透明度:</label>
+                            <span id="text-opacity-value" class="info">1</span>
+                            <input type="range" value="5" min="0" max="10" id="text-opacity"><br>
+
+                            <button id="text-add">添加到画板</button><br>
                         </div>
                     </div>
                 </div>
@@ -94,45 +106,62 @@
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
                         <div id="stamp-box" class="panel-body">
-                            <button id="alarm55" class="btn btn-default btn-sm">
-                                <span class="icon-alarm55 size-24"></span>
-                            </button>
-                            <button id="angel7" class="btn btn-default btn-sm">
-                                <span class="icon-angel7 size-24"></span>
-                            </button>
-                            <button id="bag40" class="btn btn-default btn-sm">
-                                <span class="icon-bag40 size-24"></span>
-                            </button>
-                            <button id="penguin4" class="btn btn-default btn-sm">
-                                <span class="icon-penguin4 size-24"></span>
-                            </button>
-                            <button id="bell47" class="btn btn-default btn-sm">
-                                <span class="icon-bell47 size-24"></span>
-                            </button>
-                            <button id="bell48" class="btn btn-default btn-sm">
-                                <span class="icon-bell48 size-24"></span>
-                            </button>
-                            <button id="bell49" class="btn btn-default btn-sm">
-                                <span class="icon-bell49 size-24"></span>
-                            </button>
-                            <button id="bell50" class="btn btn-default btn-sm">
-                                <span class="icon-bell50 size-24"></span>
-                            </button>
-                            <button id="bible4" class="btn btn-default btn-sm">
-                                <span class="icon-bible4 size-24"></span>
-                            </button>
-                            <button id="cake17" class="btn btn-default btn-sm">
-                                <span class="icon-cake17 size-24"></span>
-                            </button>
-                            <button id="calendar167" class="btn btn-default btn-sm">
-                                <span class="icon-calendar167 size-24"></span>
-                            </button>
-                            <button id="candle11" class="btn btn-default btn-sm">
-                                <span class="icon-candle11 size-24"></span>
-                            </button>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio1" value="circle"> 圓形
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio2" value="ellipse"> 橢圓
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio3" value="triangle"> 方形
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio4" value="rect"> 長方
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="shape" id="inlineRadio5" value="heart"> 心形
+                            </label>
                             <br>
-                            此处的形状和图案可由你们提供 或者我来提供
+                            <br>
+
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="inputf" class="col-sm-2 control-label">長</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="inputf">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputs" class="col-sm-2 control-label">寬</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="inputs">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputx" class="col-sm-2 control-label">x</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="inputx">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputy" class="col-sm-2 control-label">y</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="5" class="form-control input-sm" id="inputy">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default">添加到畫板</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+
                         </div>
                     </div>
                 </div>

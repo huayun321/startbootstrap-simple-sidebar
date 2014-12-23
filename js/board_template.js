@@ -1,7 +1,6 @@
 $( document ).ready(function() {
     var canvas = new fabric.Canvas('canvas');
-    var m_canvas = new fabric.Canvas('modal-canvas');
-    var stamp = null;
+
     /*
      * tool bar
      * */
@@ -32,8 +31,23 @@ $( document ).ready(function() {
     $('#text-add').click(function () {
         var text = $('#text-content').val();
         var color = $('#text-color').val();
-        var t = new fabric.IText(text);
-        t.setColor(color);
+        var x =  (parseInt($('#text-xp').val(), 10) * 2.83446) || 1;
+        var y =  (parseInt($('#text-yp').val(), 10) * 2.83446) || 1;
+        var sy = $('#text-sy').is(':checked');
+        var opacity = (parseInt($('#text-opacity').val(), 10) /10) || 1;
+        console.log('text: ' + text);
+        console.log('color: ' + color);
+        console.log('x: ' + x);
+        console.log('y: ' + y);
+        console.log('sy: ' + sy);
+        console.log('opacity: ' + opacity);
+        var t = new fabric.Text(text, {
+            opacity: 0,
+            color: color,
+            left: x,
+            top: y
+
+        });
         canvas.add(t);
     });
     $('#drawing-line-width').change(function () {
@@ -42,84 +56,13 @@ $( document ).ready(function() {
     });
 
     //stamp
-    $('#stamp-box > button').click(function (e) {
-        var btn_id = $(e.target).is('button') ? e.target.id : $(e.target).parent().prop('id');
-        var svg_path = 'fontcustom/svg/' + btn_id + '.svg';
-        console.log(svg_path);
-        fabric.loadSVGFromURL(svg_path, function (objects, options) {
-            var obj = fabric.util.groupSVGElements(objects, options);
-            canvas.add(obj);
+    $("input[name='shape']").change(function (e) {
+        var shape = $(e.target).val();
+        console.log(shape);
 
-        });
     });
-    //imgs
-    //$('#imgs-box > img').click(function(e) {
-    //load img and stamp
-    function handle_img_click(e) {
-        if(!canvas.getActiveObject()) {
-            return alert('请先在画板中选择一个图案，再点击图片剪切。');
-        }
-        canvas.getActiveObject().clone(function (o) {
-            o.opacity = 0.5;
-            stamp = o;
-            stamp.hasControls = false;
-        });
-        //load img
-        fabric.Image.fromURL(e.target.src, function (oimg) {
-            if (oimg.width > 750) {
-                oimg.height = oimg.height * (750 / oimg.width);
-                oimg.width = 750;
-            }
-            m_canvas.centerObject(oimg);
-            m_canvas.add(oimg);
-            oimg.setCoords();
-
-            m_canvas.centerObject(stamp);
-            m_canvas.add(stamp).setActiveObject(stamp);
-            stamp.setCoords();
-        });
-        $('#myModal').modal();
 
 
-    //});
-    };
-    //crop
-    $('#crop').click(function() {
-        stamp.opacity = 0;
-        //crop
-        var dataUrl = null;
-        dataUrl = m_canvas.toDataURL({
-            top: stamp.top,
-            left: stamp.left,
-            width: stamp.width * stamp.scaleX,
-            height: stamp.height *  stamp.scaleY
-        });
-
-        stamp = canvas.getActiveObject();
-
-        fabric.Image.fromURL(dataUrl, function(iimg) {
-            console.log('load img');
-            iimg.top =  stamp.top;
-            iimg.left = stamp.left;
-
-//
-            var stam_png = stamp.toDataURL();
-            fabric.Image.fromURL(stam_png, function(mimg) {
-                console.log('load mask');
-                iimg.filters.push( new fabric.Image.filters.Mask( { 'mask': mimg, channel:3} ) );
-
-                iimg.applyFilters(canvas.renderAll.bind(canvas));
-                canvas.add(iimg);
-                canvas.remove(stamp);
-
-            });
-
-
-        });
-
-        $('#myModal').modal('hide');
-        m_canvas.clear();
-    });
 /*
 * sidebar
 * */
@@ -149,44 +92,6 @@ $( document ).ready(function() {
     browser_check();
 
 
-    function handleFileSelect(evt) {
-        var files = evt.target.files;
-
-        //loop throuth the FileList and render image files as thumbnails.
-        for (var i = 0, f; f = files[i]; i++) {
-
-            //only process image files.
-            if (!f.type.match('image.*')) {
-                continue;
-            }
-
-            var reader = new FileReader();
-
-            //closure to capture the file information.
-            reader.onload = (function(theFile) {
-                return function (e) {
-                    //Render thumbnail.
-                    var thumb = ['<img width="100"  class="img-thumbnail" src="',
-                        e.target.result,
-                        '" title="', escape(theFile.name),
-                        '"/>'].join('');
-                    $('#imgs-box').append($(thumb).click(function(e){handle_img_click(e)}));
-                };
-            })(f);
-
-            //read in the image file as a data URL.
-            reader.readAsDataURL(f);
-        }
-    }
-
-    document.getElementById('files').addEventListener('change',
-        handleFileSelect, false);
-
-
-    $('#img-add').click(function() {
-       $('#files').click();
-        return false;
-    });
 
 
     $('#bg-color').change(function () {

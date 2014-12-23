@@ -187,4 +187,8 @@ $( document ).ready(function() {
        $('#files').click();
         return false;
     });
+
+
+    //stamp form
+
 });

@@ -29,16 +29,16 @@ Copyright 2014 Iron Summit Media Strategies, LLC. Code released under the [Apach
 ## 開始diy畫板的修改
 
 1、模板
-    尺寸調整
+done    尺寸調整
         1050 1500
         todo
             是否改爲draggable resizeable movable dropable 布局
-    背景顏色
+done    背景顏色
         單色
     保存
         保存到數據庫
         mongodb 建模
-        girdfs or mongodb blog
+        girdfs or mongodb blob
     圖形
         基本圖形
             正方形 長方形 圓形 橢圓
@@ -50,10 +50,14 @@ Copyright 2014 Iron Summit Media Strategies, LLC. Code released under the [Apach
 
     水印
         定制水印
-
+        文字面板添加 水印選項
+            位置 是否爲水印
     去掉畫筆
     去掉多餘圖形
     文件結構整理下
+
+    圖形的zindex
+    set front
 
 2、填充
     截圖
