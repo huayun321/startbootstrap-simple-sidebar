@@ -13,53 +13,96 @@ $( document ).ready(function() {
         //drawingmode
         canvas.isDrawingMode = false;
 
-        //switch tool
-        switch (btn_id) {
-            case 'tool-pencil':
-                canvas.isDrawingMode = true;
-                canvas.freeDrawingBrush.color = $('#drawing-color').val();
-                canvas.freeDrawingBrush.width = parseInt($('#drawing-line-width').val(), 10) || 1;
-                break;
-            case 'tool-text':
-                break;
-        }
+
     });
-    //draw
-    $('#drawing-color').change(function () {
-        canvas.freeDrawingBrush.color = $(this).val();
-    });
+
     $('#text-add').click(function () {
         var text = $('#text-content').val();
         var color = $('#text-color').val();
-        var x =  (parseInt($('#text-xp').val(), 10) * 2.83446) || 1;
-        var y =  (parseInt($('#text-yp').val(), 10) * 2.83446) || 1;
-        var sy = $('#text-sy').is(':checked');
-        var opacity = (parseInt($('#text-opacity').val(), 10) /10) || 1;
-        console.log('text: ' + text);
-        console.log('color: ' + color);
-        console.log('x: ' + x);
-        console.log('y: ' + y);
-        console.log('sy: ' + sy);
-        console.log('opacity: ' + opacity);
         var t = new fabric.Text(text, {
-            opacity: 0,
-            color: color,
-            left: x,
-            top: y
-
+            fill: color
         });
         canvas.add(t);
     });
-    $('#drawing-line-width').change(function () {
-        canvas.freeDrawingBrush.width = parseInt($(this).val(), 10) || 1;
-        $('#drawing-line-width-val').text($(this).val());
-    });
+
 
     //stamp
     $("input[name='shape']").change(function (e) {
         var shape = $(e.target).val();
         console.log(shape);
+        switch (shape) {
+            case 'circle':
 
+                $('#input2').prop('disabled', true);
+                break;
+            case 'ellipse':
+
+                $('#input2').prop('disabled', false);
+                break;
+            case 'rect':
+
+                $('#input2').prop('disabled', false);
+                break;
+            case 'heart':
+                $('#input2').prop('disabled', true);
+                break;
+
+        }
+
+    });
+    $('#add-shape-to').click(function(e) {
+        e.preventDefault();
+        var shape = $('input[name=shape]:checked').val();
+
+        switch (shape) {
+            case 'circle':
+                var r = (parseInt($('#input1').val(), 10) || 1) * 11.8 / 2;
+                var x = (parseInt($('#inputx').val(), 10) || 1) * 11.8;
+                var y = (parseInt($('#inputy').val(), 10) || 1) * 11.8;
+                var circle = new fabric.Circle({
+                    radius: r, fill: '#cccccc', left: x, top: y, opacity: 0.5
+                });
+
+
+                canvas.add(circle);
+                break;
+            case 'ellipse':
+                var h = (parseInt($('#input1').val(), 10) || 1) * 11.8 / 2;
+                var w = (parseInt($('#input2').val(), 10) || 1) * 11.8 / 2;
+                var x = (parseInt($('#inputx').val(), 10) || 1) * 11.8;
+                var y = (parseInt($('#inputy').val(), 10) || 1) * 11.8;
+                var ellipse = new fabric.Ellipse({
+                   rx: w, ry:h, fill: '#cccccc', left: x, top: y, opacity: 0.5
+                });
+                canvas.add(ellipse);
+                break;
+            case 'rect':
+                var h = (parseInt($('#input1').val(), 10) || 1) * 11.8;
+                var w = (parseInt($('#input2').val(), 10) || 1) * 11.8;
+                var x = (parseInt($('#inputx').val(), 10) || 1) * 11.8;
+                var y = (parseInt($('#inputy').val(), 10) || 1) * 11.8;
+                var rect = new fabric.Rect({
+                    width: w, height:h, fill: '#cccccc', left: x, top: y, opacity: 0.5
+                });
+                canvas.add(rect);
+                break;
+            case 'heart':
+                var h = (parseInt($('#input1').val(), 10) || 1) * 11.8;
+                var w = (parseInt($('#input2').val(), 10) || 1) * 11.8;
+                var x = (parseInt($('#inputx').val(), 10) || 1) * 11.8;
+                var y = (parseInt($('#inputy').val(), 10) || 1) * 11.8;
+                var svg_path = 'template_svg/heart3.svg';
+                fabric.loadSVGFromURL(svg_path, function (objects, options) {
+                    var obj = fabric.util.groupSVGElements(objects, options);
+                    obj.scaleToHeight(h);
+                    obj.left = x;
+                    obj.top = y;
+                    obj.opacity = 0.5;
+                    canvas.add(obj);
+
+                });
+                break;
+        }
     });
 
 
@@ -92,10 +135,9 @@ $( document ).ready(function() {
     browser_check();
 
 
-
-
     $('#bg-color').change(function () {
         var color = $('#bg-color').val();
         canvas.setBackgroundColor(color, canvas.renderAll.bind(canvas));
     });
+
 });

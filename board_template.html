@@ -52,26 +52,7 @@
         <div id="sidebar-wrapper">
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
-                        <h4 class="panel-title">
 
-                                画笔选项
-
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body">
-                            <label for="drawing-line-width">线条宽度:</label>
-                            <span id="drawing-line-width-val" class="info">30</span><input type="range" value="30" min="0" max="150" id="drawing-line-width"><br>
-
-                            <label for="drawing-color">线条颜色:</label>
-                            <input type="color" value="#005E7A" id="drawing-color"><br>
-
-
-                        </div>
-                    </div>
-                </div>
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h4 class="panel-title">
@@ -83,17 +64,6 @@
                             <textarea id="text-content" rows="5" style="width:100%"></textarea><br>
                             <label for="text-color">文本颜色:</label>
                             <input type="color" value="#005E7A" id="text-color"><br>
-
-
-                            <label for="text-xp">橫坐標:</label>
-                            <input type="text" size="5"  id="text-xp">毫米<br>
-                            <label for="text-yp">縱坐標:</label>
-                            <input type="text" size="5"  id="text-yp">毫米<br>
-                            <label for="text-sy">是否爲水印:</label>
-                            <input type="checkbox"  id="text-sy"><br>
-                            <label for="text-opacity">透明度:</label>
-                            <span id="text-opacity-value" class="info">1</span>
-                            <input type="range" value="5" min="0" max="10" id="text-opacity"><br>
 
                             <button id="text-add">添加到画板</button><br>
                         </div>
@@ -115,10 +85,7 @@
                                 <input type="radio" name="shape" id="inlineRadio2" value="ellipse"> 橢圓
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="shape" id="inlineRadio3" value="triangle"> 方形
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="shape" id="inlineRadio4" value="rect"> 長方
+                                <input type="radio" name="shape" id="inlineRadio4" value="rect"> 方形
                             </label>
                             <label class="radio-inline">
                                 <input type="radio" name="shape" id="inlineRadio5" value="heart"> 心形
@@ -128,15 +95,15 @@
 
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label for="inputf" class="col-sm-2 control-label">長</label>
+                                    <label for="input1" id="input1-l" class="col-sm-2 control-label">長</label>
                                     <div class="col-sm-6">
-                                        <input type="text" size="5" class="form-control input-sm" id="inputf">
+                                        <input type="text" size="5" class="form-control input-sm" id="input1">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputs" class="col-sm-2 control-label">寬</label>
+                                    <label for="input2" id="input1-2" class="col-sm-2 control-label">寬</label>
                                     <div class="col-sm-6">
-                                        <input type="text" size="5" class="form-control input-sm" id="inputs">
+                                        <input type="text" size="5" class="form-control input-sm" id="input2">
                                     </div>
                                 </div>
 
@@ -155,7 +122,7 @@
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-default">添加到畫板</button>
+                                        <button id="add-shape-to" type="submit" class="btn btn-default">添加到畫板</button>
                                     </div>
                                 </div>
                             </form>
@@ -165,20 +132,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingFour">
-                        <h4 class="panel-title">
-                            图片选项
-                        </h4>
-                    </div>
-                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                        <button id="img-add">添加图片</button>
-                        <input style="display: none" type="file" id="files" name="files[]" multiple /><br>
-                        <div id="imgs-box" class="panel-body">
 
-                        </div>
-                    </div>
-                </div>
             </div>
 
 
@@ -211,14 +165,6 @@
                         </div>
                         <div id="toolbar" class="btn-group" role="toolbar" aria-label="...">
 
-
-
-                                <button id="tool-pencil" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-parent="#accordion">
-                                    <span class="glyphicon glyphicon-pencil" aria-hidden="false"></span>
-                                    画笔
-                                </button>
-
-
                                 <button id="tool-text" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" data-parent="#accordion">
                                     <span class="glyphicon glyphicon-font" aria-hidden="false"></span>
                                     文本
@@ -228,13 +174,6 @@
                                     <span class="glyphicon glyphicon-tree-conifer" aria-hidden="false"></span>
                                     图案
                                 </button>
-
-                                <button id="tool-img" type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour" data-parent="#accordion">
-                                    <span class="glyphicon glyphicon-picture" aria-hidden="false"></span>
-                                    图片
-                                </button>
-
-
 
                         </div>
 
